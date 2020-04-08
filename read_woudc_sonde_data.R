@@ -1,8 +1,10 @@
 # R script to read in ozone sonde data
 library(stringr)
 
+# get round absolute paths
+
 # read in all file list (links to web data so need an internet connection)
-all_file_list <- readLines("~/Downloads/woudc-DataURLFileList.csv")
+all_file_list <- readLines(here::here("input_data/woudc-DataURLFileList.csv"))
 
 # remove the first row in the file -- check the file to see if you need to do this?
 all_file_list <- all_file_list[-1]
@@ -178,6 +180,6 @@ write.table(data_output, file="~/Documents/ACSIS/Data/DanJones/test_data_file2.c
 
 # this file contains the input information on the files that have been written out in case of the need
 # for any cross checking. 
-write.table(input_list, file="~/Documents/ACSIS/Data/DanJones/test_data_file_inputs2.csv", 
+write.table(input_list, file=here::here"output_data/test_data_file_inputs2.csv"), 
             sep = ",", row.names = FALSE, col.names = TRUE)
 
